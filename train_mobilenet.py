@@ -24,6 +24,7 @@ import tensorflow as tf
 import pickle
 from keras_retinanet.models.mobilenet import MobileNetRetinaNet
 from keras_retinanet.preprocessing.csv_generator import CSVGenerator
+from keras_retinanet.preprocessing.pascal_voc import PascalVocGenerator
 import keras_retinanet
 import matplotlib.pyplot as plt
 
@@ -52,30 +53,27 @@ if __name__ == '__main__':
     args = parse_args()
 
     train_path = "/home/aragon/workspace/datasets/obj_detection_rdc2/train_linux.csv"
-    classes = "/home/aragon/workspace/datasets/obj_detection_rdc2/classes.csv"
-    val_path = "/home/aragon/workspace/datasets/obj_detection_rdc2/val_linux.csv"
+ 
 
     # create image data generator objects
     train_image_data_generator = keras.preprocessing.image.ImageDataGenerator(
-        horizontal_flip=True,
+        horizontal_flip=False,
     )
 
     # create a generator for training data
-    train_generator = CSVGenerator(
-        csv_data_file=train_path,
-        csv_class_file=classes,
+    train_generator = PascalVocGenerator(
+        data_dir = train_path,
+        set_name = 'train',
         image_data_generator=train_image_data_generator,
-        batch_size=args.batch_size
     )
 
     test_image_data_generator = keras.preprocessing.image.ImageDataGenerator()
 
     # create a generator for testing data
-    test_generator = CSVGenerator(
-        csv_data_file=val_path,
-        csv_class_file=classes,
+    test_generator = PascalVocGenerator(
+        data_dir = train_path,
+        set_name = 'val' , 
         image_data_generator=test_image_data_generator,
-        batch_size=args.batch_size
     )
 
     num_classes = train_generator.num_classes()
