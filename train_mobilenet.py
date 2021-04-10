@@ -42,6 +42,7 @@ def create_model(num_classes, alpha =1):
 def parse_args():
     parser = argparse.ArgumentParser(
         description='Simple training script for object detection from a CSV file.')
+    parser.add_argument('path', help='Path to dataset directory.')
     parser.add_argument(
         '--batch-size', help='Size of the batches.', default=1, type=int)
     parser.add_argument(
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     # parse arguments
     args = parse_args()
 
-    train_path = "/home/aragon/workspace/datasets/obj_detection_rdc2/train_linux.csv"
+    train_path = args.path
  
 
     # create image data generator objects
