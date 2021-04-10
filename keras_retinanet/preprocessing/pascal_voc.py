@@ -28,27 +28,16 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
-voc_classes = {
-    'aeroplane'   : 0,
-    'bicycle'     : 1,
-    'bird'        : 2,
-    'boat'        : 3,
-    'bottle'      : 4,
-    'bus'         : 5,
-    'car'         : 6,
-    'cat'         : 7,
-    'chair'       : 8,
-    'cow'         : 9,
-    'diningtable' : 10,
-    'dog'         : 11,
-    'horse'       : 12,
-    'motorbike'   : 13,
-    'person'      : 14,
-    'pottedplant' : 15,
-    'sheep'       : 16,
-    'sofa'        : 17,
-    'train'       : 18,
-    'tvmonitor'   : 19
+voc_classes = {  
+    'do_not_enter'   :  0,
+    'stop'           :  1,
+    'forward'        :  2,
+    'this_way_right' :  3,
+    'no_right_turn'  :  4,
+    'no_left_turn'   :  5,
+    'turn_left'      :  6,
+    'turn_right'     :  7,
+    'object'         :  8
 }
 
 
